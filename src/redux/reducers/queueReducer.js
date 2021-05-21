@@ -1,12 +1,20 @@
 import { initialState } from '../store';
 // import undoable from 'redux-undo';
-import { QUEUE_SONG } from '../actions/actionTypes';
+import { QUEUE_SONG, UNQUEUE_SONG } from '../actions/actionTypes';
 
 const queueReducer = (state = initialState.songQueue, action) => {
   switch (action.type) {
     case QUEUE_SONG:
       return {
-        song: action.payload,
+        ...state,
+        songsToPlay: [...state.songsToPlay, action.payload],
+      };
+    case UNQUEUE_SONG:
+      return {
+        ...state,
+        songsToPlay: state.songsToPlay.filter(
+          (s) => s.id !== action.payload.id
+        ),
       };
 
     default:

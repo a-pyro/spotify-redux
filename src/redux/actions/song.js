@@ -1,16 +1,11 @@
 import {
   ADD_CURRENT_PLAYING,
-  QUEUE_SONG,
   PLAY_PREVIOUS_SONG,
   UNQUEUE_SONG,
 } from './actionTypes';
 
 export const playSong = (song) => ({
   type: ADD_CURRENT_PLAYING,
-  payload: song,
-});
-export const addSongToQueue = (song) => ({
-  type: QUEUE_SONG,
   payload: song,
 });
 

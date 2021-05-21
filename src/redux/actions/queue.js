@@ -1,11 +1,11 @@
-import { ADD_TO_QUEUE, REMOVE_FROM_QUEUE } from './actionTypes';
+import { QUEUE_SONG, UNQUEUE_SONG } from './actionTypes';
 
-export const addToQueue = (song) => ({
-  type: ADD_TO_QUEUE,
+export const queueSong = (song) => ({
+  type: QUEUE_SONG,
   payload: song,
 });
 
-export const removeFromQueue = (song) => ({
-  type: REMOVE_FROM_QUEUE,
+export const unqueueSong = (song) => ({
+  type: UNQUEUE_SONG,
   payload: song,
 });
