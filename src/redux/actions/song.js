@@ -1,23 +1,16 @@
 import {
   ADD_CURRENT_PLAYING,
-  ADD_SONG,
   QUEUE_SONG,
-  PLAY_NEXT_SONG,
   PLAY_PREVIOUS_SONG,
-  REMOVE_FROM_QUEUE,
+  UNQUEUE_SONG,
 } from './actionTypes';
 
-export const addSong = (song) => ({
-  type: ADD_SONG,
+export const playSong = (song) => ({
+  type: ADD_CURRENT_PLAYING,
   payload: song,
 });
 export const addSongToQueue = (song) => ({
   type: QUEUE_SONG,
-  payload: song,
-});
-
-export const playSong = (song) => ({
-  type: ADD_CURRENT_PLAYING,
   payload: song,
 });
 
@@ -26,7 +19,7 @@ export const nextSong = (song) => (dispatch, getState) => {
   const nextSong = songQueue.queue[0];
   if (!nextSong) return;
   //remove the song from the queue
-  dispatch({ type: REMOVE_FROM_QUEUE, payload: song });
+  dispatch({ type: UNQUEUE_SONG, payload: song });
   //add the song to current
   dispatch({ type: ADD_CURRENT_PLAYING, payload: song });
 };

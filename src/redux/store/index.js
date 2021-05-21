@@ -11,7 +11,7 @@ export const initialState = {
     favourites: [],
   },
   songQueue: {
-    song: [],
+    songs: [],
   },
   playingSong: {
     song: {},

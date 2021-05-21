@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addSong, addSongToQueue } from '../redux/actions/song';
+import {} from '../redux/actions/song';
 
 const Song = ({ track, addSong, addSongToQueue }) => {
   const handlePlaySong = (track) => {
-    addSong(track);
+    // addSong(track);
   };
   const handleAddQueue = (track) => {
-    addSongToQueue(track);
+    // addSongToQueue(track);
   };
 
   return (
@@ -31,4 +31,4 @@ const Song = ({ track, addSong, addSongToQueue }) => {
   );
 };
 
-export default connect(null, { addSong, addSongToQueue })(Song);
+export default connect(null, {})(Song);

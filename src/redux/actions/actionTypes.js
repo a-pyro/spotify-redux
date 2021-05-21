@@ -1,6 +1,5 @@
-export const ADD_SONG = 'ADD_SONG'; //
 export const QUEUE_SONG = 'QUEUE_SONG'; //
-export const REMOVE_FROM_QUEUE = 'REMOVE_FROM_QUEUE'; //
+export const UNQUEUE_SONG = 'UNQUEUE_SONG'; //
 export const LIKE_SONG = 'LIKE_SONG'; //
 export const UNLIKE_SONG = 'UNLIKE_SONG'; //
 export const ADD_CURRENT_PLAYING = 'ADD_CURRENT_PLAYING'; //
