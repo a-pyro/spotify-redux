@@ -4,12 +4,20 @@ import { connect } from 'react-redux';
 import { queueSong, unqueueSong } from '../redux/actions/queue';
 import { playSong } from '../redux/actions/song';
 
+const mapStateToProps = (state) => ({
+  songsToPlay: state.songQueue.songsToPlay,
+});
+
 const Song = ({ track, playSong, queueSong, unqueueSong, songsToPlay }) => {
   const handlePlaySong = (track) => {
     playSong(track);
   };
   const handleQueue = (track) => {
-    console.log('addqueue');
+    if (songsToPlay.some((song) => song.id === track.id)) {
+      unqueueSong(track);
+      return;
+    }
+    queueSong(track);
   };
 
   return (
@@ -32,11 +40,17 @@ const Song = ({ track, playSong, queueSong, unqueueSong, songsToPlay }) => {
           onClick={() => handleQueue(track)}
           className='text-white badge'
         >
-          <Badge>QUEUE</Badge>
+          <Badge>
+            {songsToPlay.some((song) => song.id === track.id)
+              ? 'UNQUEUE'
+              : 'QUEUE'}
+          </Badge>
         </div>
       </div>
     </div>
   );
 };
 
-export default connect(null, { playSong, queueSong, unqueueSong })(Song);
+export default connect(mapStateToProps, { playSong, queueSong, unqueueSong })(
+  Song
+);
