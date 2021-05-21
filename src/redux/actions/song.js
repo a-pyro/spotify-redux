@@ -18,6 +18,7 @@ export const nextSong = (song) => (dispatch, getState) => {
   //add the song to current
   dispatch({ type: ADD_CURRENT_PLAYING, payload: song });
 };
+
 export const previousSong = (song) => ({
   type: PLAY_PREVIOUS_SONG,
   payload: song,
