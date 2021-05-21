@@ -47,7 +47,7 @@ const Player = ({ song }) => {
               <span className='btn rounded-pill btn-secondary'>Queue</span>
             </div>
 
-            <ListGroup style={listStyle}>
+            <ListGroup className='shadow' style={listStyle}>
               <ListGroup.Item>Cras justo odio</ListGroup.Item>
               <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
               <ListGroup.Item>Morbi leo risus</ListGroup.Item>
