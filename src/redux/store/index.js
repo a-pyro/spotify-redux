@@ -1,10 +1,9 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import likesReducer from 'redux/reducers/likesReducer';
-import queueReducer from 'redux/reducers/queueReducer';
+
+import likesReducer from '../reducers/likesReducer';
+import undoableQueue from '../reducers/queueReducer';
 import playingSongReducer from 'redux/reducers/playingSongReducer';
 
 export const initialState = {
@@ -12,7 +11,7 @@ export const initialState = {
     favourites: [],
   },
   songQueue: {
-    queue: [],
+    song: null,
   },
   playingSong: {
     song: {},
@@ -21,16 +20,10 @@ export const initialState = {
 
 const rootReducer = combineReducers({
   likedSongs: likesReducer,
-  songQueue: queueReducer,
-  playingSong: playingSongReducer,
+  songQueue: undoableQueue,
+  // playingSong: playingSongReducer,
 });
 
 const composedEnhancers = composeWithDevTools(applyMiddleware(thunk));
-const persistConfig = {
-  key: 'root',
-  storage,
-};
-const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = createStore(persistedReducer, composedEnhancers);
-export const persistor = persistStore(store);
+export const store = createStore(rootReducer, composedEnhancers);
