@@ -5,12 +5,13 @@ import React from 'react';
 
 import { Row, ListGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import QueueModal from './QueueModal.jsx';
 
 const mapStateToProps = (state) => ({
   song: state.playingSong.song,
   likedSongs: state.likedSongs.favorites,
   playingSong: state.playingSong.song,
-  songQueue: state.songQueue,
+  songQueue: state.songQueue.songsToPlay,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -44,7 +45,7 @@ const listStyle = {
   zIndex: '1000',
 };
 
-const Player = ({ song }) => {
+const Player = ({ song, songQueue }) => {
   console.log(song);
   return (
     <div className='container-fluid fixed-bottom bg-container pt-1'>
@@ -57,16 +58,11 @@ const Player = ({ song }) => {
             </div>
             <div style={queueStyle}>
               {/* <img src={song.md5_image} alt='singerpic' /> */}
-              <span className='btn rounded-pill btn-secondary'>Queue</span>
+              <QueueModal>
+                <span className='btn rounded-pill btn-secondary'>Queue</span>
+              </QueueModal>
             </div>
 
-            <ListGroup className='shadow' style={listStyle}>
-              <ListGroup.Item>Cras justo odio</ListGroup.Item>
-              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-              <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-              <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-            </ListGroup>
             <div className='col-6 col-md-4 col-lg-2 offset-3 offset-md-4 offset-lg-5 playerControls mt-1'>
               <Row>
                 <a href='/'>
