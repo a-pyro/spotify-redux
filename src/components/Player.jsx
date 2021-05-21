@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row } from 'react-bootstrap';
+import { Row, ListGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => ({
@@ -13,6 +13,23 @@ const songInfoStyle = {
   left: '8%',
   top: '100%',
 };
+const queueStyle = {
+  position: 'absolute',
+  color: 'white',
+  display: 'flex',
+  flexDirection: 'column',
+  right: '8%',
+  top: '100%',
+};
+const listStyle = {
+  position: 'absolute',
+  color: 'white',
+  display: 'flex',
+  flexDirection: 'column',
+  top: '-650%',
+  right: '5%',
+  zIndex: '1000',
+};
 
 const Player = ({ song }) => {
   console.log(song);
@@ -25,6 +42,18 @@ const Player = ({ song }) => {
               {/* <img src={song.md5_image} alt='singerpic' /> */}
               <span>{song.title_short}</span>
             </div>
+            <div style={queueStyle}>
+              {/* <img src={song.md5_image} alt='singerpic' /> */}
+              <span className='btn rounded-pill btn-secondary'>Queue</span>
+            </div>
+
+            <ListGroup style={listStyle}>
+              <ListGroup.Item>Cras justo odio</ListGroup.Item>
+              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+              <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+              <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+            </ListGroup>
             <div className='col-6 col-md-4 col-lg-2 offset-3 offset-md-4 offset-lg-5 playerControls mt-1'>
               <Row>
                 <a href='/'>
@@ -64,4 +93,4 @@ const Player = ({ song }) => {
   );
 };
 
-export default connect(mapStateToProps)(Player);
+export default connect(mapStateToProps, {})(Player);
