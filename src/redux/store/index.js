@@ -1,10 +1,9 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
 import likesReducer from '../reducers/likesReducer';
 import undoableQueue from '../reducers/queueReducer';
-import playingSongReducer from 'redux/reducers/playingSongReducer';
+// import playingSongReducer from 'redux/reducers/playingSongReducer';
 
 export const initialState = {
   likedSongs: {
